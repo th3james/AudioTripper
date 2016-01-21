@@ -50,7 +50,7 @@
 		8AC546A61C514E5600C33F24 /* AudioTrip-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AudioTrip-Bridging-Header.h"; sourceTree = "<group>"; };
 		8AC546A71C514E5600C33F24 /* AudioTripTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AudioTripTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		8AC546A81C514E5700C33F24 /* Hello.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Hello.cpp; sourceTree = "<group>"; };
-		8AC546AC1C51536500C33F24 /* HelloCppBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HelloCppBridge.h; path = ../HelloCppBridge.h; sourceTree = "<group>"; };
+		8AC546AC1C51536500C33F24 /* HelloCppBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelloCppBridge.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -497,6 +497,7 @@
 				8AC5469F1C5149DB00C33F24 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8AC546A01C5149DB00C33F24 /* Build configuration list for PBXNativeTarget "AudioTripTests" */ = {
 			isa = XCConfigurationList;
@@ -505,6 +506,7 @@
 				8AC546A21C5149DB00C33F24 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8AC546A31C5149DB00C33F24 /* Build configuration list for PBXNativeTarget "AudioTripUITests" */ = {
 			isa = XCConfigurationList;
@@ -513,6 +515,7 @@
 				8AC546A51C5149DB00C33F24 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
