@@ -15,7 +15,10 @@ class ViewController: NSViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    let cppValue = sayHelloCpp()
+    var ptr = sayHelloCpp()
+    let cppValue = withUnsafePointer(&ptr) { thePtr in
+      String.fromCString(thePtr[0])!
+    }
     datLabel.stringValue = "Changed \(cppValue)"
   }
 

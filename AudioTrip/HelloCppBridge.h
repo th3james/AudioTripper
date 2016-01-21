@@ -17,7 +17,7 @@
 extern "C" {
 #endif
   
-float sayHelloCpp();
+const char * sayHelloCpp();
   
 #ifdef __cplusplus
 }

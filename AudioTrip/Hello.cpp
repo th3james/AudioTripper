@@ -8,6 +8,6 @@
 
 #include "HelloCppBridge.h"
 
-float sayHelloCpp() {
-  return 5.0;
+const char * sayHelloCpp() {
+  return "Hello there";
 }
