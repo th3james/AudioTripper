@@ -10,10 +10,13 @@ import Cocoa
 
 class ViewController: NSViewController {
 
+  @IBOutlet weak var datLabel: NSTextField!
+  
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    // Do any additional setup after loading the view.
+    let cppValue = sayHelloCpp()
+    datLabel.stringValue = "Changed \(cppValue)"
   }
 
   override var representedObject: AnyObject? {

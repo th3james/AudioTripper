@@ -13,6 +13,8 @@
 		8AC546831C5149DB00C33F24 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AC546811C5149DB00C33F24 /* Main.storyboard */; };
 		8AC5468E1C5149DB00C33F24 /* AudioTripTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC5468D1C5149DB00C33F24 /* AudioTripTests.swift */; };
 		8AC546991C5149DB00C33F24 /* AudioTripUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC546981C5149DB00C33F24 /* AudioTripUITests.swift */; };
+		8AC546AA1C514E5700C33F24 /* Hello.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8AC546A81C514E5700C33F24 /* Hello.cpp */; };
+		8AC546AB1C514E5700C33F24 /* Hello.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8AC546A81C514E5700C33F24 /* Hello.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +47,10 @@
 		8AC546941C5149DB00C33F24 /* AudioTripUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AudioTripUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AC546981C5149DB00C33F24 /* AudioTripUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioTripUITests.swift; sourceTree = "<group>"; };
 		8AC5469A1C5149DB00C33F24 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8AC546A61C514E5600C33F24 /* AudioTrip-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AudioTrip-Bridging-Header.h"; sourceTree = "<group>"; };
+		8AC546A71C514E5600C33F24 /* AudioTripTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AudioTripTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		8AC546A81C514E5700C33F24 /* Hello.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Hello.cpp; sourceTree = "<group>"; };
+		8AC546AC1C51536500C33F24 /* HelloCppBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HelloCppBridge.h; path = ../HelloCppBridge.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,11 +101,15 @@
 		8AC5467A1C5149DB00C33F24 /* AudioTrip */ = {
 			isa = PBXGroup;
 			children = (
+				8AC546811C5149DB00C33F24 /* Main.storyboard */,
 				8AC5467B1C5149DB00C33F24 /* AppDelegate.swift */,
 				8AC5467D1C5149DB00C33F24 /* ViewController.swift */,
 				8AC5467F1C5149DB00C33F24 /* Assets.xcassets */,
-				8AC546811C5149DB00C33F24 /* Main.storyboard */,
 				8AC546841C5149DB00C33F24 /* Info.plist */,
+				8AC546A81C514E5700C33F24 /* Hello.cpp */,
+				8AC546AC1C51536500C33F24 /* HelloCppBridge.h */,
+				8AC546A61C514E5600C33F24 /* AudioTrip-Bridging-Header.h */,
+				8AC546A71C514E5600C33F24 /* AudioTripTests-Bridging-Header.h */,
 			);
 			path = AudioTrip;
 			sourceTree = "<group>";
@@ -252,6 +262,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8AC546AA1C514E5700C33F24 /* Hello.cpp in Sources */,
 				8AC5467E1C5149DB00C33F24 /* ViewController.swift in Sources */,
 				8AC5467C1C5149DB00C33F24 /* AppDelegate.swift in Sources */,
 			);
@@ -261,6 +272,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8AC546AB1C514E5700C33F24 /* Hello.cpp in Sources */,
 				8AC5468E1C5149DB00C33F24 /* AudioTripTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -384,11 +396,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = AudioTrip/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.analogmoment.AudioTrip;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "AudioTrip/AudioTrip-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -396,11 +411,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = AudioTrip/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.analogmoment.AudioTrip;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "AudioTrip/AudioTrip-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -408,11 +425,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = AudioTripTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.analogmoment.AudioTripTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "AudioTrip/AudioTripTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AudioTrip.app/Contents/MacOS/AudioTrip";
 			};
 			name = Debug;
@@ -421,11 +441,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = AudioTripTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.analogmoment.AudioTripTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "AudioTrip/AudioTripTests-Bridging-Header.h";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AudioTrip.app/Contents/MacOS/AudioTrip";
 			};
 			name = Release;
