@@ -15,6 +15,11 @@
 		8AC546991C5149DB00C33F24 /* AudioTripUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC546981C5149DB00C33F24 /* AudioTripUITests.swift */; };
 		8AC546AA1C514E5700C33F24 /* Hello.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8AC546A81C514E5700C33F24 /* Hello.cpp */; };
 		8AC546AB1C514E5700C33F24 /* Hello.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8AC546A81C514E5700C33F24 /* Hello.cpp */; };
+		8ACB22DD1C51744C00ECAB9F /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8ACB22DC1C51744C00ECAB9F /* main.cpp */; };
+		8ACB22E31C51762600ECAB9F /* catch.hpp in Sources */ = {isa = PBXBuildFile; fileRef = 8ACB22E21C5174D000ECAB9F /* catch.hpp */; };
+		8ACB22E41C51762600ECAB9F /* HelloCppTests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8ACB22E11C5174B100ECAB9F /* HelloCppTests.cpp */; };
+		8ACB22E51C5176A100ECAB9F /* Hello.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8AC546A81C514E5700C33F24 /* Hello.cpp */; };
+		8ACB22E61C5176A100ECAB9F /* HelloCppBridge.h in Sources */ = {isa = PBXBuildFile; fileRef = 8AC546AC1C51536500C33F24 /* HelloCppBridge.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +39,18 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		8ACB22D81C51744C00ECAB9F /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		8AC546781C5149DB00C33F24 /* AudioTrip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AudioTrip.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AC5467B1C5149DB00C33F24 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -51,6 +68,10 @@
 		8AC546A71C514E5600C33F24 /* AudioTripTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AudioTripTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		8AC546A81C514E5700C33F24 /* Hello.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Hello.cpp; sourceTree = "<group>"; };
 		8AC546AC1C51536500C33F24 /* HelloCppBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelloCppBridge.h; sourceTree = "<group>"; };
+		8ACB22DA1C51744C00ECAB9F /* CPlusPlusTests */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = CPlusPlusTests; sourceTree = BUILT_PRODUCTS_DIR; };
+		8ACB22DC1C51744C00ECAB9F /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		8ACB22E11C5174B100ECAB9F /* HelloCppTests.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HelloCppTests.cpp; sourceTree = "<group>"; };
+		8ACB22E21C5174D000ECAB9F /* catch.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = catch.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +96,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8ACB22D71C51744C00ECAB9F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -84,6 +112,7 @@
 				8AC5467A1C5149DB00C33F24 /* AudioTrip */,
 				8AC5468C1C5149DB00C33F24 /* AudioTripTests */,
 				8AC546971C5149DB00C33F24 /* AudioTripUITests */,
+				8ACB22DB1C51744C00ECAB9F /* CPlusPlusTests */,
 				8AC546791C5149DB00C33F24 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -94,6 +123,7 @@
 				8AC546781C5149DB00C33F24 /* AudioTrip.app */,
 				8AC546891C5149DB00C33F24 /* AudioTripTests.xctest */,
 				8AC546941C5149DB00C33F24 /* AudioTripUITests.xctest */,
+				8ACB22DA1C51744C00ECAB9F /* CPlusPlusTests */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -130,6 +160,16 @@
 				8AC5469A1C5149DB00C33F24 /* Info.plist */,
 			);
 			path = AudioTripUITests;
+			sourceTree = "<group>";
+		};
+		8ACB22DB1C51744C00ECAB9F /* CPlusPlusTests */ = {
+			isa = PBXGroup;
+			children = (
+				8ACB22E21C5174D000ECAB9F /* catch.hpp */,
+				8ACB22E11C5174B100ECAB9F /* HelloCppTests.cpp */,
+				8ACB22DC1C51744C00ECAB9F /* main.cpp */,
+			);
+			path = CPlusPlusTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -188,6 +228,23 @@
 			productReference = 8AC546941C5149DB00C33F24 /* AudioTripUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		8ACB22D91C51744C00ECAB9F /* CPlusPlusTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8ACB22DE1C51744C00ECAB9F /* Build configuration list for PBXNativeTarget "CPlusPlusTests" */;
+			buildPhases = (
+				8ACB22D61C51744C00ECAB9F /* Sources */,
+				8ACB22D71C51744C00ECAB9F /* Frameworks */,
+				8ACB22D81C51744C00ECAB9F /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CPlusPlusTests;
+			productName = CPlusPlusTests;
+			productReference = 8ACB22DA1C51744C00ECAB9F /* CPlusPlusTests */;
+			productType = "com.apple.product-type.tool";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -209,6 +266,9 @@
 						CreatedOnToolsVersion = 7.2;
 						TestTargetID = 8AC546771C5149DA00C33F24;
 					};
+					8ACB22D91C51744C00ECAB9F = {
+						CreatedOnToolsVersion = 7.2;
+					};
 				};
 			};
 			buildConfigurationList = 8AC546731C5149DA00C33F24 /* Build configuration list for PBXProject "AudioTrip" */;
@@ -227,6 +287,7 @@
 				8AC546771C5149DA00C33F24 /* AudioTrip */,
 				8AC546881C5149DB00C33F24 /* AudioTripTests */,
 				8AC546931C5149DB00C33F24 /* AudioTripUITests */,
+				8ACB22D91C51744C00ECAB9F /* CPlusPlusTests */,
 			);
 		};
 /* End PBXProject section */
@@ -282,6 +343,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				8AC546991C5149DB00C33F24 /* AudioTripUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8ACB22D61C51744C00ECAB9F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8ACB22E51C5176A100ECAB9F /* Hello.cpp in Sources */,
+				8ACB22E61C5176A100ECAB9F /* HelloCppBridge.h in Sources */,
+				8ACB22E31C51762600ECAB9F /* catch.hpp in Sources */,
+				8ACB22E41C51762600ECAB9F /* HelloCppTests.cpp in Sources */,
+				8ACB22DD1C51744C00ECAB9F /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -478,6 +551,20 @@
 			};
 			name = Release;
 		};
+		8ACB22DF1C51744C00ECAB9F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		8ACB22E01C51744C00ECAB9F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -516,6 +603,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		8ACB22DE1C51744C00ECAB9F /* Build configuration list for PBXNativeTarget "CPlusPlusTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8ACB22DF1C51744C00ECAB9F /* Debug */,
+				8ACB22E01C51744C00ECAB9F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};

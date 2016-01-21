@@ -9,6 +9,11 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>CPlusPlusTests.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
@@ -23,6 +28,11 @@
 			<true/>
 		</dict>
 		<key>8AC546931C5149DB00C33F24</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8ACB22D91C51744C00ECAB9F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
