@@ -9,7 +9,16 @@
 #include "catch.hpp"
 
 #include "HelloCppBridge.h"
+#include "TestClass.hpp"
 
 TEST_CASE( "It returns a friendly greeting", "[hello]" ) {
   REQUIRE(sayHelloCpp() == "Hello there");
+}
+
+TEST_CASE( "TestClass.greet() returns a friendly greeting", "[hello]" ) {
+  const char * greeting = "Hello there";
+  CHECK(TestClass(greeting).greet() == greeting);
+  
+  const char * greeting2 = "Howdy";
+  CHECK(TestClass(greeting2).greet() == greeting2);
 }
