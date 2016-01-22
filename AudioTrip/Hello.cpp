@@ -7,7 +7,8 @@
 //
 
 #include "HelloCppBridge.h"
+#include "TestClass.hpp"
 
 const char * sayHelloCpp() {
-  return "Hello there";
+  return TestClass("Hello there").greet();
 }
