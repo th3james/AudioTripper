@@ -14,6 +14,7 @@
 namespace AudioTripper {
   struct EvaluatedFile {
     const char * filePath;
+    signed long int loudestPeak;
   };
   
   struct EvaluatedFile evaluate(const char * filePath);

@@ -62,6 +62,7 @@
 		8AB65DA71C5526F00061209E /* AudioTripperTests.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AudioTripperTests.cpp; sourceTree = "<group>"; };
 		8AB65DAA1C552AAA0061209E /* AudioTripper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AudioTripper.cpp; sourceTree = "<group>"; };
 		8AB65DAB1C552AAA0061209E /* AudioTripper.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = AudioTripper.hpp; sourceTree = "<group>"; };
+		8AB65DAF1C5574AC0061209E /* fixtures */ = {isa = PBXFileReference; lastKnownFileType = folder; path = fixtures; sourceTree = "<group>"; };
 		8AC546781C5149DB00C33F24 /* AudioTrip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AudioTrip.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AC5467B1C5149DB00C33F24 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8AC5467D1C5149DB00C33F24 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -179,6 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				8ACB22E21C5174D000ECAB9F /* catch.hpp */,
+				8AB65DAF1C5574AC0061209E /* fixtures */,
 				8ACB22E11C5174B100ECAB9F /* HelloCppTests.cpp */,
 				8AB65DA71C5526F00061209E /* AudioTripperTests.cpp */,
 				8ACB22DC1C51744C00ECAB9F /* main.cpp */,
