@@ -23,9 +23,10 @@ TEST_CASE( "AudioTripper::evaluate returns an AudioTripper::EvaluatedFile", "[au
     
     signed long int expectedPeak = 0;
     
-    // why doesn't sizeof(formString) return 4?
-    for (int i = 0; i < 4; i++) {
-      expectedPeak += (int)formString[i];
+    const char * strPtr = formString;
+    for (int i = 0; *strPtr != '\0'; i++) {
+      expectedPeak += *strPtr;
+      strPtr++;
     }
     
     CHECK(result.loudestPeak == expectedPeak);
