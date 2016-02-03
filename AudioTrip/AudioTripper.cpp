@@ -15,6 +15,12 @@ using namespace std;
 
 namespace AudioTripper {
   namespace private_details {
+    unsigned int readFileLength(ifstream& audioFile) {
+      unsigned int fileLength;
+      audioFile.read(reinterpret_cast<char*>(&fileLength), sizeof(fileLength));
+      fileLength = OSSwapBigToHostInt32(fileLength);
+      return fileLength;
+    }
   };
   
   struct EvaluatedFile evaluate(const char * filePath) {
@@ -29,12 +35,11 @@ namespace AudioTripper {
     
     if (audioFile.good()) {
       audioFile.seekg (0, ios::beg);
+      
+      // Read 'FORM' header
       audioFile.read(&fileTypeHeader, bytesToRead);
       
-      
-      audioFile.read(reinterpret_cast<char*>(&evaluatedFile.fileLength), sizeof(evaluatedFile.fileLength));
-      // IFF file length numbers are big-endian
-      evaluatedFile.fileLength = OSSwapBigToHostInt32(evaluatedFile.fileLength);
+      evaluatedFile.fileLength = private_details::readFileLength(audioFile);
       
       audioFile.close();
     }
