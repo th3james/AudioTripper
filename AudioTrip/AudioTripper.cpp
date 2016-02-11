@@ -68,6 +68,10 @@ namespace AudioTripper {
       
       return chunk;
     }
+    
+    unsigned int readLoudestPeakFromSoundChunk(ifstream& audioFile, CommonChunk common) {
+      return 0;
+    }
   };
   
   
@@ -97,6 +101,8 @@ namespace AudioTripper {
         IffChunkHeader header = private_details::readChunkHeader(audioFile);
         if (strncmp(header.typeId, "COMM", 4) == 0) {
           common = private_details::readCommonChunk(audioFile);
+        } else if (strncmp(header.typeId, "SSND", 4) == 0) {
+          evaluatedFile.loudestPeak = private_details::readLoudestPeakFromSoundChunk(audioFile, common);
         } else {
           audioFile.seekg(header.chunkLength, ios::cur);
         }
