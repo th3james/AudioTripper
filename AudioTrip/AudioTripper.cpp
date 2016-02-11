@@ -17,6 +17,10 @@ namespace AudioTripper {
   struct IffChunkHeader {
     char * typeId;
     unsigned int chunkLength;
+    
+    ~IffChunkHeader() {
+      delete typeId;
+    }
   };
   
   struct CommonChunk {
