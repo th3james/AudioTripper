@@ -6,6 +6,7 @@
 //  Copyright © 2016 James Cox-Morton. All rights reserved.
 //
 
+#include <stdint.h>
 #include <iostream>
 #include <fstream>
 using namespace std;
@@ -16,7 +17,7 @@ using namespace std;
 namespace AudioTripper {
   struct IffChunkHeader {
     char * typeId;
-    unsigned int chunkLength;
+    uint32_t chunkLength;
     
     ~IffChunkHeader() {
       delete typeId;
@@ -24,22 +25,22 @@ namespace AudioTripper {
   };
   
   struct CommonChunk {
-    short          numChannels;
-    unsigned int   numSampleFrames;
-    short          sampleSize;
-    unsigned int   sampleRate;
+    uint16_t   numChannels;
+    uint32_t   numSampleFrames;
+    uint16_t   sampleSize;
+    uint32_t   sampleRate;
   };
   
   namespace private_details {
-    unsigned int readUInt(ifstream& audioFile) {
-      unsigned int number;
+    uint32_t readULong(ifstream& audioFile) {
+      uint32_t number;
       audioFile.read(reinterpret_cast<char*>(&number), sizeof(number));
       return OSSwapBigToHostInt32(number);
     }
     
-    short readShort(ifstream& audioFile) {
-      unsigned int number;
-      audioFile.read(reinterpret_cast<char*>(&number), 2);
+    uint16_t readShort(ifstream& audioFile) {
+      uint16_t number;
+      audioFile.read(reinterpret_cast<char*>(&number), sizeof(number));
       return OSSwapBigToHostInt16(number);
     }
     
@@ -49,7 +50,7 @@ namespace AudioTripper {
       };
       
       audioFile.read(header.typeId, 4);
-      header.chunkLength = readUInt(audioFile);
+      header.chunkLength = readULong(audioFile);
       
       return header;
     }
@@ -58,7 +59,7 @@ namespace AudioTripper {
       CommonChunk chunk;
       
       chunk.numChannels = readShort(audioFile);
-      chunk.numSampleFrames = readUInt(audioFile);
+      chunk.numSampleFrames = readULong(audioFile);
       chunk.sampleSize = readShort(audioFile);
       
       // This isn't actually a UInt, it's a 10 byte extended float
@@ -70,7 +71,15 @@ namespace AudioTripper {
     }
     
     unsigned int readLoudestPeakFromSoundChunk(ifstream& audioFile, IffChunkHeader& header, CommonChunk common) {
-      audioFile.seekg(header.chunkLength, ios::cur);
+      uint32_t remainingBytes = header.chunkLength;
+      /*
+      unsigned int offset = readULong(audioFile);
+      remainingBytes -= sizeof(offset);
+      unsigned int blockSize = readULong(audioFile);
+      remainingBytes -= sizeof(blockSize);
+       */
+      
+      audioFile.seekg(remainingBytes, ios::cur);
       return 0;
     }
   };
@@ -91,7 +100,7 @@ namespace AudioTripper {
       // Read 'FORM' header
       audioFile.read(&fileTypeHeader, 4);
       // Read file length
-      evaluatedFile.fileLength = private_details::readUInt(audioFile);
+      evaluatedFile.fileLength = private_details::readULong(audioFile);
       // Read file format
       evaluatedFile.format = new char;
       audioFile.read(evaluatedFile.format, 4);
