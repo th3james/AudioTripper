@@ -21,13 +21,15 @@ TEST_CASE( "AudioTripper::evaluate returns an AudioTripper::EvaluatedFile", "[au
   SECTION("with the loudest peak") {
     const char * formString = "FORM";
     
-    signed long int expectedPeak = 0;
+    uint16_t expectedPeak = 32391;
     
+    /*
     const char * strPtr = formString;
     for (int i = 0; *strPtr != '\0'; i++) {
       expectedPeak += *strPtr;
       strPtr++;
     }
+    */
     
     CHECK(result.loudestPeak == expectedPeak);
   }

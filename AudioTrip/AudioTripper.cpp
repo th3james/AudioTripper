@@ -7,6 +7,7 @@
 //
 
 #include <stdint.h>
+#include <assert.h>
 #include <iostream>
 #include <fstream>
 using namespace std;
@@ -38,12 +39,18 @@ namespace AudioTripper {
       return OSSwapBigToHostInt32(number);
     }
     
-    uint16_t readShort(ifstream& audioFile) {
+    uint16_t readUShort(ifstream& audioFile) {
       uint16_t number;
       audioFile.read(reinterpret_cast<char*>(&number), sizeof(number));
       return OSSwapBigToHostInt16(number);
     }
-    
+
+    int16_t readShort(ifstream& audioFile) {
+      int16_t number;
+      audioFile.read(reinterpret_cast<char*>(&number), sizeof(number));
+      return OSSwapBigToHostInt16(number);
+    }
+ 
     IffChunkHeader readChunkHeader(ifstream& audioFile) {
       IffChunkHeader header = {
         new char
@@ -58,29 +65,51 @@ namespace AudioTripper {
     CommonChunk readCommonChunk(ifstream& audioFile) {
       CommonChunk chunk;
       
-      chunk.numChannels = readShort(audioFile);
+      chunk.numChannels = readUShort(audioFile);
       chunk.numSampleFrames = readULong(audioFile);
-      chunk.sampleSize = readShort(audioFile);
+      chunk.sampleSize = readUShort(audioFile);
+      assert(chunk.sampleSize == 16);
       
       // This isn't actually a UInt, it's a 10 byte extended float
       // Skipping handling it for now
       // chunk.sampleRate = readUInt(audioFile);
+      chunk.sampleRate = 0;
       audioFile.seekg(10, ios::cur);
       
       return chunk;
     }
     
-    unsigned int readLoudestPeakFromSoundChunk(ifstream& audioFile, IffChunkHeader& header, CommonChunk common) {
+    int16_t readLoudestPeakFromSoundChunk(ifstream& audioFile, IffChunkHeader& header, CommonChunk common) {
+      int16_t loudestPeak = 0;
       uint32_t remainingBytes = header.chunkLength;
-      /*
-      unsigned int offset = readULong(audioFile);
+
+      uint32_t offset = readULong(audioFile);
+      assert(offset == 0);
       remainingBytes -= sizeof(offset);
-      unsigned int blockSize = readULong(audioFile);
-      remainingBytes -= sizeof(blockSize);
-       */
       
+      uint32_t blockSize = readULong(audioFile);
+      assert(offset == 0);
+      remainingBytes -= sizeof(blockSize);
+      
+      uint32_t remainingSampleFrames = common.numSampleFrames;
+      
+      while (remainingSampleFrames > 0) {
+        for (uint16_t channelIndex = 0; channelIndex < common.numChannels; channelIndex++) {
+          assert(remainingBytes > 0);
+          
+          int16_t samplePoint = readShort(audioFile);
+          if (samplePoint > loudestPeak) {
+            loudestPeak = samplePoint;
+          }
+          remainingBytes -= sizeof(samplePoint);
+
+        }
+        remainingSampleFrames--;
+      }
+      assert(remainingBytes == 0);
       audioFile.seekg(remainingBytes, ios::cur);
-      return 0;
+      
+      return loudestPeak;
     }
   };
   
