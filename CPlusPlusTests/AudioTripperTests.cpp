@@ -31,7 +31,7 @@ TEST_CASE( "AudioTripper::evaluate returns an AudioTripper::EvaluatedFile", "[au
   }
   
   SECTION("with length of the file") {
-    unsigned long int expectedLength = 7042644;
+    uint32_t expectedLength = 7042644;
         
     CHECK(result.fileLength == expectedLength);
   }
