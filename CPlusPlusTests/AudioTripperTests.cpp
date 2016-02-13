@@ -18,18 +18,14 @@ TEST_CASE( "AudioTripper::evaluate returns an AudioTripper::EvaluatedFile", "[au
     CHECK(result.filePath == filePath);
   }
   
+  SECTION("with the format") {
+    const char * expectedFormat = "AIFF";
+    
+    CHECK(strcmp(result.format, expectedFormat) == 0);
+  }
+  
   SECTION("with the loudest peak") {
-    const char * formString = "FORM";
-    
     uint16_t expectedPeak = 32391;
-    
-    /*
-    const char * strPtr = formString;
-    for (int i = 0; *strPtr != '\0'; i++) {
-      expectedPeak += *strPtr;
-      strPtr++;
-    }
-    */
     
     CHECK(result.loudestPeak == expectedPeak);
   }
