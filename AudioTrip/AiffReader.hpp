@@ -14,9 +14,29 @@
 #include <fstream>
 
 namespace AiffReader {
+  
+  struct IffChunkHeader {
+    char * typeId;
+    uint32_t chunkLength;
+    
+    ~IffChunkHeader() {
+      delete typeId;
+    }
+  };
+  
+  struct CommonChunk {
+    uint16_t   numChannels;
+    uint32_t   numSampleFrames;
+    uint16_t   sampleSize;
+    uint32_t   sampleRate;
+  };
+  
   uint32_t readULong(std::ifstream& audiofile);
   uint16_t readUShort(std::ifstream& audiofile);
   int16_t readShort(std::ifstream& audiofile);
+  
+  IffChunkHeader readChunkHeader(std::ifstream& audiofile);
+  CommonChunk readCommonChunk(std::ifstream& audiofile);
 }
 
 

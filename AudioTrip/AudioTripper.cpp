@@ -17,53 +17,10 @@ using namespace std;
 #include "AudioTripper.hpp"
 
 namespace AudioTripper {
-  struct IffChunkHeader {
-    char * typeId;
-    uint32_t chunkLength;
-    
-    ~IffChunkHeader() {
-      delete typeId;
-    }
-  };
-  
-  struct CommonChunk {
-    uint16_t   numChannels;
-    uint32_t   numSampleFrames;
-    uint16_t   sampleSize;
-    uint32_t   sampleRate;
-  };
-  
+
   namespace private_details {
- 
-    IffChunkHeader readChunkHeader(ifstream& audioFile) {
-      IffChunkHeader header = {
-        new char
-      };
-      
-      audioFile.read(header.typeId, 4);
-      header.chunkLength = AiffReader::readULong(audioFile);
-      
-      return header;
-    }
     
-    CommonChunk readCommonChunk(ifstream& audioFile) {
-      CommonChunk chunk;
-      
-      chunk.numChannels = AiffReader::readUShort(audioFile);
-      chunk.numSampleFrames = AiffReader::readULong(audioFile);
-      chunk.sampleSize = AiffReader::readUShort(audioFile);
-      assert(chunk.sampleSize == 16);
-      
-      // This isn't actually a UInt, it's a 10 byte extended float
-      // Skipping handling it for now
-      // chunk.sampleRate = readUInt(audioFile);
-      chunk.sampleRate = 0;
-      audioFile.seekg(10, ios::cur);
-      
-      return chunk;
-    }
-    
-    int16_t readLoudestPeakFromSoundChunk(ifstream& audioFile, IffChunkHeader& header, CommonChunk common) {
+    int16_t readLoudestPeakFromSoundChunk(ifstream& audioFile, AiffReader::IffChunkHeader& header, AiffReader::CommonChunk common) {
       int16_t loudestPeak = 0;
       uint32_t remainingBytes = header.chunkLength;
 
@@ -118,12 +75,12 @@ namespace AudioTripper {
       evaluatedFile.format = new char;
       audioFile.read(evaluatedFile.format, 4);
       
-      CommonChunk common;
+      AiffReader::CommonChunk common;
       
       while (audioFile.tellg() < evaluatedFile.fileLength) {
-        IffChunkHeader header = private_details::readChunkHeader(audioFile);
+        AiffReader::IffChunkHeader header = AiffReader::readChunkHeader(audioFile);
         if (strncmp(header.typeId, "COMM", 4) == 0) {
-          common = private_details::readCommonChunk(audioFile);
+          common = AiffReader::readCommonChunk(audioFile);
         } else if (strncmp(header.typeId, "SSND", 4) == 0) {
           evaluatedFile.loudestPeak = private_details::readLoudestPeakFromSoundChunk(audioFile, header, common);
         } else {
