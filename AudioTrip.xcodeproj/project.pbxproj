@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8A0043851C70C51700F26F64 /* AiffReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8A0043831C70C51700F26F64 /* AiffReader.cpp */; };
+		8A0043861C70C51700F26F64 /* AiffReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8A0043831C70C51700F26F64 /* AiffReader.cpp */; };
+		8A0043871C70C51700F26F64 /* AiffReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8A0043831C70C51700F26F64 /* AiffReader.cpp */; };
 		8AB65DA91C5526F00061209E /* AudioTripperTests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8AB65DA71C5526F00061209E /* AudioTripperTests.cpp */; };
 		8AB65DAC1C552AAA0061209E /* AudioTripper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8AB65DAA1C552AAA0061209E /* AudioTripper.cpp */; };
 		8AB65DAD1C552AAA0061209E /* AudioTripper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8AB65DAA1C552AAA0061209E /* AudioTripper.cpp */; };
@@ -59,6 +62,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8A0043831C70C51700F26F64 /* AiffReader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AiffReader.cpp; sourceTree = "<group>"; };
+		8A0043841C70C51700F26F64 /* AiffReader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = AiffReader.hpp; sourceTree = "<group>"; };
 		8AB65DA71C5526F00061209E /* AudioTripperTests.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AudioTripperTests.cpp; sourceTree = "<group>"; };
 		8AB65DAA1C552AAA0061209E /* AudioTripper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AudioTripper.cpp; sourceTree = "<group>"; };
 		8AB65DAB1C552AAA0061209E /* AudioTripper.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = AudioTripper.hpp; sourceTree = "<group>"; };
@@ -195,6 +200,8 @@
 				8ACB22E91C52A14300ECAB9F /* TestClass.hpp */,
 				8AB65DAA1C552AAA0061209E /* AudioTripper.cpp */,
 				8AB65DAB1C552AAA0061209E /* AudioTripper.hpp */,
+				8A0043831C70C51700F26F64 /* AiffReader.cpp */,
+				8A0043841C70C51700F26F64 /* AiffReader.hpp */,
 			);
 			name = Cpp;
 			sourceTree = "<group>";
@@ -354,6 +361,7 @@
 				8AC546AA1C514E5700C33F24 /* Hello.cpp in Sources */,
 				8AC5467E1C5149DB00C33F24 /* ViewController.swift in Sources */,
 				8AC5467C1C5149DB00C33F24 /* AppDelegate.swift in Sources */,
+				8A0043851C70C51700F26F64 /* AiffReader.cpp in Sources */,
 				8AB65DAC1C552AAA0061209E /* AudioTripper.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -366,6 +374,7 @@
 				8AB65DAD1C552AAA0061209E /* AudioTripper.cpp in Sources */,
 				8AC546AB1C514E5700C33F24 /* Hello.cpp in Sources */,
 				8AC5468E1C5149DB00C33F24 /* AudioTripTests.swift in Sources */,
+				8A0043861C70C51700F26F64 /* AiffReader.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -388,6 +397,7 @@
 				8ACB22E61C5176A100ECAB9F /* HelloCppBridge.h in Sources */,
 				8ACB22E31C51762600ECAB9F /* catch.hpp in Sources */,
 				8ACB22E41C51762600ECAB9F /* HelloCppTests.cpp in Sources */,
+				8A0043871C70C51700F26F64 /* AiffReader.cpp in Sources */,
 				8ACB22DD1C51744C00ECAB9F /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

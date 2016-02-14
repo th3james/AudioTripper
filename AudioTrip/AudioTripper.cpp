@@ -8,6 +8,7 @@
 
 #include <stdint.h>
 #include <assert.h>
+#include "AiffReader.hpp"
 #include <iostream>
 #include <fstream>
 using namespace std;
@@ -33,23 +34,6 @@ namespace AudioTripper {
   };
   
   namespace private_details {
-    uint32_t readULong(ifstream& audioFile) {
-      uint32_t number;
-      audioFile.read(reinterpret_cast<char*>(&number), sizeof(number));
-      return OSSwapBigToHostInt32(number);
-    }
-    
-    uint16_t readUShort(ifstream& audioFile) {
-      uint16_t number;
-      audioFile.read(reinterpret_cast<char*>(&number), sizeof(number));
-      return OSSwapBigToHostInt16(number);
-    }
-
-    int16_t readShort(ifstream& audioFile) {
-      int16_t number;
-      audioFile.read(reinterpret_cast<char*>(&number), sizeof(number));
-      return OSSwapBigToHostInt16(number);
-    }
  
     IffChunkHeader readChunkHeader(ifstream& audioFile) {
       IffChunkHeader header = {
@@ -57,7 +41,7 @@ namespace AudioTripper {
       };
       
       audioFile.read(header.typeId, 4);
-      header.chunkLength = readULong(audioFile);
+      header.chunkLength = AiffReader::readULong(audioFile);
       
       return header;
     }
@@ -65,9 +49,9 @@ namespace AudioTripper {
     CommonChunk readCommonChunk(ifstream& audioFile) {
       CommonChunk chunk;
       
-      chunk.numChannels = readUShort(audioFile);
-      chunk.numSampleFrames = readULong(audioFile);
-      chunk.sampleSize = readUShort(audioFile);
+      chunk.numChannels = AiffReader::readUShort(audioFile);
+      chunk.numSampleFrames = AiffReader::readULong(audioFile);
+      chunk.sampleSize = AiffReader::readUShort(audioFile);
       assert(chunk.sampleSize == 16);
       
       // This isn't actually a UInt, it's a 10 byte extended float
@@ -83,11 +67,11 @@ namespace AudioTripper {
       int16_t loudestPeak = 0;
       uint32_t remainingBytes = header.chunkLength;
 
-      uint32_t offset = readULong(audioFile);
+      uint32_t offset = AiffReader::readULong(audioFile);
       assert(offset == 0);
       remainingBytes -= sizeof(offset);
       
-      uint32_t blockSize = readULong(audioFile);
+      uint32_t blockSize = AiffReader::readULong(audioFile);
       assert(offset == 0);
       remainingBytes -= sizeof(blockSize);
       
@@ -97,7 +81,7 @@ namespace AudioTripper {
         for (uint16_t channelIndex = 0; channelIndex < common.numChannels; channelIndex++) {
           assert(remainingBytes > 0);
           
-          int16_t samplePoint = readShort(audioFile);
+          int16_t samplePoint = AiffReader::readShort(audioFile);
           if (samplePoint > loudestPeak) {
             loudestPeak = samplePoint;
           }
@@ -129,7 +113,7 @@ namespace AudioTripper {
       // Read 'FORM' header
       audioFile.read(&fileTypeHeader, 4);
       // Read file length
-      evaluatedFile.fileLength = private_details::readULong(audioFile);
+      evaluatedFile.fileLength = AiffReader::readULong(audioFile);
       // Read file format
       evaluatedFile.format = new char;
       audioFile.read(evaluatedFile.format, 4);
