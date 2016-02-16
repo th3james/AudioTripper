@@ -57,4 +57,35 @@ namespace AiffReader {
     
     return chunk;
   }
+  
+  SoundDataChunk readSoundDataChunk(ifstream& audioFile, IffChunkHeader& header, CommonChunk common) {
+    SoundDataChunk chunk = SoundDataChunk(
+      common.numSampleFrames, common.numChannels
+    );
+    
+    uint32_t remainingBytes = header.chunkLength;
+    
+    chunk.offset = AiffReader::readULong(audioFile);
+    assert(chunk.offset == 0);
+    remainingBytes -= sizeof(chunk.offset);
+    
+    chunk.blockSize = AiffReader::readULong(audioFile);
+    assert(chunk.blockSize == 0);
+    remainingBytes -= sizeof(chunk.blockSize);
+    
+    for (int32_t sfi = 0; sfi < chunk.sampleFrameCount; sfi++) {
+      SampleFrame *frame = &chunk.sampleFrames[sfi];
+      frame->allocate(chunk.channelCount);
+      
+      for (uint16_t ci = 0; ci < chunk.channelCount; ci++) {
+        assert(remainingBytes > 0);
+        
+        frame->samplePoints[ci] = readShort(audioFile);
+        remainingBytes -= sizeof(frame->samplePoints[ci]);
+      }
+    }
+    assert(remainingBytes == 0);
+    
+    return chunk;
+  }
 }

@@ -20,35 +20,19 @@ namespace AudioTripper {
 
   namespace private_details {
     
-    int16_t readLoudestPeakFromSoundChunk(ifstream& audioFile, AiffReader::IffChunkHeader& header, AiffReader::CommonChunk common) {
+    int16_t findLoudestPeak(AiffReader::SoundDataChunk soundData) {
       int16_t loudestPeak = 0;
-      uint32_t remainingBytes = header.chunkLength;
-
-      uint32_t offset = AiffReader::readULong(audioFile);
-      assert(offset == 0);
-      remainingBytes -= sizeof(offset);
       
-      uint32_t blockSize = AiffReader::readULong(audioFile);
-      assert(offset == 0);
-      remainingBytes -= sizeof(blockSize);
-      
-      uint32_t remainingSampleFrames = common.numSampleFrames;
-      
-      while (remainingSampleFrames > 0) {
-        for (uint16_t channelIndex = 0; channelIndex < common.numChannels; channelIndex++) {
-          assert(remainingBytes > 0);
-          
-          int16_t samplePoint = AiffReader::readShort(audioFile);
+      for (int32_t sfi = 0; sfi < soundData.sampleFrameCount; sfi++) {
+        AiffReader::SampleFrame sampleFrame = soundData.sampleFrames[sfi];
+        
+        for (uint16_t ci = 0; ci < sampleFrame.channelCount; ci++) {
+          int16_t samplePoint = sampleFrame.samplePoints[ci];
           if (samplePoint > loudestPeak) {
             loudestPeak = samplePoint;
           }
-          remainingBytes -= sizeof(samplePoint);
-
         }
-        remainingSampleFrames--;
       }
-      assert(remainingBytes == 0);
-      audioFile.seekg(remainingBytes, ios::cur);
       
       return loudestPeak;
     }
@@ -82,7 +66,9 @@ namespace AudioTripper {
         if (strncmp(header.typeId, "COMM", 4) == 0) {
           common = AiffReader::readCommonChunk(audioFile);
         } else if (strncmp(header.typeId, "SSND", 4) == 0) {
-          evaluatedFile.loudestPeak = private_details::readLoudestPeakFromSoundChunk(audioFile, header, common);
+          
+          AiffReader::SoundDataChunk soundData = AiffReader::readSoundDataChunk(audioFile, header, common);
+          evaluatedFile.loudestPeak = private_details::findLoudestPeak(soundData);
         } else {
           audioFile.seekg(header.chunkLength, ios::cur);
         }
