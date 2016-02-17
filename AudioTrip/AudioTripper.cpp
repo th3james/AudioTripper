@@ -20,14 +20,14 @@ namespace AudioTripper {
 
   namespace private_details {
     
-    int16_t findLoudestPeak(AiffReader::SoundDataChunk soundData) {
+    int16_t findLoudestPeak(AiffReader::SoundDataChunk* soundData) {
       int16_t loudestPeak = 0;
       
-      for (int32_t sfi = 0; sfi < soundData.sampleFrameCount; sfi++) {
-        AiffReader::SampleFrame sampleFrame = soundData.sampleFrames[sfi];
+      for (int32_t sfi = 0; sfi < soundData->sampleFrameCount; sfi++) {
+        AiffReader::SampleFrame* sampleFrame = &soundData->sampleFrames[sfi];
         
-        for (uint16_t ci = 0; ci < sampleFrame.channelCount; ci++) {
-          int16_t samplePoint = sampleFrame.samplePoints[ci];
+        for (uint16_t ci = 0; ci < sampleFrame->channelCount; ci++) {
+          int16_t samplePoint = sampleFrame->samplePoints[ci];
           if (samplePoint > loudestPeak) {
             loudestPeak = samplePoint;
           }
@@ -68,7 +68,7 @@ namespace AudioTripper {
         } else if (strncmp(header.typeId, "SSND", 4) == 0) {
           
           AiffReader::SoundDataChunk soundData = AiffReader::readSoundDataChunk(audioFile, header, common);
-          evaluatedFile.loudestPeak = private_details::findLoudestPeak(soundData);
+          evaluatedFile.loudestPeak = private_details::findLoudestPeak(&soundData);
         } else {
           audioFile.seekg(header.chunkLength, ios::cur);
         }

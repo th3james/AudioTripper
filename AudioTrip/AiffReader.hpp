@@ -39,6 +39,10 @@ namespace AiffReader {
       channelCount = theChannelCount;
       samplePoints = new int16_t [channelCount];
     }
+    
+    ~SampleFrame() {
+      delete[] samplePoints;
+    }
   };
   
   struct SoundDataChunk {
@@ -53,6 +57,10 @@ namespace AiffReader {
       channelCount = theChannelCount;
       
       sampleFrames = new SampleFrame [sampleFrameCount];
+    }
+    
+    ~SoundDataChunk() {
+      delete[] sampleFrames;
     }
   };
   
