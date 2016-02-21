@@ -63,10 +63,9 @@ namespace AudioTripper {
       
       while (audioFile.tellg() < evaluatedFile.fileLength) {
         AiffReader::IffChunkHeader header = AiffReader::readChunkHeader(audioFile);
-        if (strncmp(header.typeId, "COMM", 4) == 0) {
+        if (header.typeId == "COMM") {
           common = AiffReader::readCommonChunk(audioFile);
-        } else if (strncmp(header.typeId, "SSND", 4) == 0) {
-          
+        } else if (header.typeId == "SSND") {
           AiffReader::SoundDataChunk soundData = AiffReader::readSoundDataChunk(audioFile, header, common);
           evaluatedFile.loudestPeak = private_details::findLoudestPeak(soundData);
         } else {

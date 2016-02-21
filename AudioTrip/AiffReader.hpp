@@ -17,11 +17,11 @@
 namespace AiffReader {
   
   struct IffChunkHeader {
-    char * typeId;
+    std::string typeId;
     uint32_t chunkLength;
     
-    ~IffChunkHeader() {
-      delete typeId;
+    IffChunkHeader() {
+      typeId.reserve(4);
     }
   };
   

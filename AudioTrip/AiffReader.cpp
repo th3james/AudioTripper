@@ -31,11 +31,12 @@ namespace AiffReader {
   }
   
   IffChunkHeader readChunkHeader(ifstream& audioFile) {
-    IffChunkHeader header = {
-      new char
-    };
+    IffChunkHeader header;
     
-    audioFile.read(header.typeId, 4);
+    int8_t size = 4;
+    std::string buffer(size, ' ');
+    audioFile.read(&buffer[0], size);
+    header.typeId = buffer;
     header.chunkLength = AiffReader::readULong(audioFile);
     
     return header;
