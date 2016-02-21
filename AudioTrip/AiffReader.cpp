@@ -72,16 +72,16 @@ namespace AiffReader {
     chunk.blockSize = AiffReader::readULong(audioFile);
     assert(chunk.blockSize == 0);
     remainingBytes -= sizeof(chunk.blockSize);
-    
-    for (int32_t sfi = 0; sfi < chunk.sampleFrameCount; sfi++) {
-      SampleFrame *frame = &chunk.sampleFrames[sfi];
-      frame->allocate(chunk.channelCount);
+
+    assert(chunk.sampleFrames.size() > 0);
+    for (int32_t sfi = 0; sfi < chunk.sampleFrames.size(); sfi++) {
+      SampleFrame& frame = chunk.sampleFrames.at(sfi);
       
       for (uint16_t ci = 0; ci < chunk.channelCount; ci++) {
         assert(remainingBytes > 0);
         
-        frame->samplePoints[ci] = readShort(audioFile);
-        remainingBytes -= sizeof(frame->samplePoints[ci]);
+        frame.samplePoints[ci] = readShort(audioFile);
+        remainingBytes -= sizeof(frame.samplePoints.at(ci));
       }
     }
     assert(remainingBytes == 0);

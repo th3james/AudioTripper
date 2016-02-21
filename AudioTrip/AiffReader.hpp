@@ -12,6 +12,7 @@
 #include <stdio.h>
 #include <stdint.h>
 #include <fstream>
+#include <vector>
 
 namespace AiffReader {
   
@@ -33,15 +34,14 @@ namespace AiffReader {
 
   struct SampleFrame {
     int16_t channelCount;
-    int16_t *samplePoints;
+    std::vector<int16_t> samplePoints;
     
-    void allocate(int16_t theChannelCount) {
+    SampleFrame(int16_t theChannelCount) {
       channelCount = theChannelCount;
-      samplePoints = new int16_t [channelCount];
-    }
-    
-    ~SampleFrame() {
-      delete[] samplePoints;
+      samplePoints.reserve(channelCount);
+      for(int16_t i = 0; i < channelCount; i++) {
+        samplePoints.push_back(0);
+      }
     }
   };
   
@@ -50,17 +50,16 @@ namespace AiffReader {
     uint32_t    blockSize;
     uint32_t    sampleFrameCount;
     uint16_t    channelCount;
-    SampleFrame *sampleFrames;
+    std::vector<SampleFrame> sampleFrames;
     
     SoundDataChunk(int32_t theSampleFrameCount, uint16_t theChannelCount) {
       sampleFrameCount = theSampleFrameCount;
       channelCount = theChannelCount;
       
-      sampleFrames = new SampleFrame [sampleFrameCount];
-    }
-    
-    ~SoundDataChunk() {
-      delete[] sampleFrames;
+      sampleFrames.reserve(sampleFrameCount);
+      for(int32_t i = 0; i < sampleFrameCount; i++) {
+        sampleFrames.push_back(SampleFrame(channelCount));
+      }
     }
   };
   
