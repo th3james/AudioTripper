@@ -13,24 +13,10 @@
 #include <stdint.h>
 #include <fstream>
 #include <vector>
+#include "IffChunkHeader.hpp"
+#include "CommonChunk.h"
 
 namespace AiffReader {
-  
-  struct IffChunkHeader {
-    std::string typeId;
-    uint32_t chunkLength;
-    
-    IffChunkHeader() {
-      typeId.reserve(4);
-    }
-  };
-  
-  struct CommonChunk {
-    uint16_t  numChannels;
-    uint32_t  numSampleFrames;
-    uint16_t  sampleSize;
-    uint32_t  sampleRate;
-  };
 
   struct SampleFrame {
     int16_t channelCount;

@@ -10,6 +10,10 @@
 		8A0043851C70C51700F26F64 /* AiffReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8A0043831C70C51700F26F64 /* AiffReader.cpp */; };
 		8A0043861C70C51700F26F64 /* AiffReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8A0043831C70C51700F26F64 /* AiffReader.cpp */; };
 		8A0043871C70C51700F26F64 /* AiffReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8A0043831C70C51700F26F64 /* AiffReader.cpp */; };
+		8A1C21BD1C81F2ED002DBE53 /* IffChunkHeader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8A1C21BB1C81F2ED002DBE53 /* IffChunkHeader.cpp */; };
+		8A1C21BE1C81F2ED002DBE53 /* IffChunkHeader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8A1C21BB1C81F2ED002DBE53 /* IffChunkHeader.cpp */; };
+		8A1C21BF1C81F2ED002DBE53 /* IffChunkHeader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8A1C21BB1C81F2ED002DBE53 /* IffChunkHeader.cpp */; };
+		8A1C21C01C81F2ED002DBE53 /* IffChunkHeader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8A1C21BB1C81F2ED002DBE53 /* IffChunkHeader.cpp */; };
 		8AB65DA91C5526F00061209E /* AudioTripperTests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8AB65DA71C5526F00061209E /* AudioTripperTests.cpp */; };
 		8AB65DAC1C552AAA0061209E /* AudioTripper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8AB65DAA1C552AAA0061209E /* AudioTripper.cpp */; };
 		8AB65DAD1C552AAA0061209E /* AudioTripper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8AB65DAA1C552AAA0061209E /* AudioTripper.cpp */; };
@@ -64,6 +68,9 @@
 /* Begin PBXFileReference section */
 		8A0043831C70C51700F26F64 /* AiffReader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AiffReader.cpp; sourceTree = "<group>"; };
 		8A0043841C70C51700F26F64 /* AiffReader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = AiffReader.hpp; sourceTree = "<group>"; };
+		8A1C21BB1C81F2ED002DBE53 /* IffChunkHeader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IffChunkHeader.cpp; sourceTree = "<group>"; };
+		8A1C21BC1C81F2ED002DBE53 /* IffChunkHeader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = IffChunkHeader.hpp; sourceTree = "<group>"; };
+		8A1C21C11C81F542002DBE53 /* CommonChunk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonChunk.h; sourceTree = "<group>"; };
 		8AB65DA71C5526F00061209E /* AudioTripperTests.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AudioTripperTests.cpp; sourceTree = "<group>"; };
 		8AB65DAA1C552AAA0061209E /* AudioTripper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AudioTripper.cpp; sourceTree = "<group>"; };
 		8AB65DAB1C552AAA0061209E /* AudioTripper.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = AudioTripper.hpp; sourceTree = "<group>"; };
@@ -124,6 +131,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8A1C21BA1C81F2A5002DBE53 /* AiffReader */ = {
+			isa = PBXGroup;
+			children = (
+				8A0043831C70C51700F26F64 /* AiffReader.cpp */,
+				8A0043841C70C51700F26F64 /* AiffReader.hpp */,
+				8A1C21BB1C81F2ED002DBE53 /* IffChunkHeader.cpp */,
+				8A1C21BC1C81F2ED002DBE53 /* IffChunkHeader.hpp */,
+				8A1C21C11C81F542002DBE53 /* CommonChunk.h */,
+			);
+			name = AiffReader;
+			sourceTree = "<group>";
+		};
 		8AC5466F1C5149DA00C33F24 = {
 			isa = PBXGroup;
 			children = (
@@ -196,12 +215,11 @@
 		8ACB22E71C52A11F00ECAB9F /* Cpp */ = {
 			isa = PBXGroup;
 			children = (
+				8A1C21BA1C81F2A5002DBE53 /* AiffReader */,
 				8ACB22E81C52A14300ECAB9F /* TestClass.cpp */,
 				8ACB22E91C52A14300ECAB9F /* TestClass.hpp */,
 				8AB65DAA1C552AAA0061209E /* AudioTripper.cpp */,
 				8AB65DAB1C552AAA0061209E /* AudioTripper.hpp */,
-				8A0043831C70C51700F26F64 /* AiffReader.cpp */,
-				8A0043841C70C51700F26F64 /* AiffReader.hpp */,
 			);
 			name = Cpp;
 			sourceTree = "<group>";
@@ -363,6 +381,7 @@
 				8AC5467C1C5149DB00C33F24 /* AppDelegate.swift in Sources */,
 				8A0043851C70C51700F26F64 /* AiffReader.cpp in Sources */,
 				8AB65DAC1C552AAA0061209E /* AudioTripper.cpp in Sources */,
+				8A1C21BD1C81F2ED002DBE53 /* IffChunkHeader.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -374,6 +393,7 @@
 				8AB65DAD1C552AAA0061209E /* AudioTripper.cpp in Sources */,
 				8AC546AB1C514E5700C33F24 /* Hello.cpp in Sources */,
 				8AC5468E1C5149DB00C33F24 /* AudioTripTests.swift in Sources */,
+				8A1C21BE1C81F2ED002DBE53 /* IffChunkHeader.cpp in Sources */,
 				8A0043861C70C51700F26F64 /* AiffReader.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -382,6 +402,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A1C21BF1C81F2ED002DBE53 /* IffChunkHeader.cpp in Sources */,
 				8AC546991C5149DB00C33F24 /* AudioTripUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -390,6 +411,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A1C21C01C81F2ED002DBE53 /* IffChunkHeader.cpp in Sources */,
 				8ACB22EC1C52A14300ECAB9F /* TestClass.cpp in Sources */,
 				8AB65DAE1C552AAA0061209E /* AudioTripper.cpp in Sources */,
 				8AB65DA91C5526F00061209E /* AudioTripperTests.cpp in Sources */,
@@ -572,11 +594,13 @@
 		8AC546A41C5149DB00C33F24 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = AudioTripUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.analogmoment.AudioTripUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TEST_TARGET_NAME = AudioTrip;
 				USES_XCTRUNNER = YES;
 			};
@@ -585,6 +609,7 @@
 		8AC546A51C5149DB00C33F24 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = AudioTripUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
