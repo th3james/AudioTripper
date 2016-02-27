@@ -148,6 +148,14 @@
 			children = (
 				8A0043831C70C51700F26F64 /* AiffReader.cpp */,
 				8A0043841C70C51700F26F64 /* AiffReader.hpp */,
+				8A1C21CE1C81F788002DBE53 /* DataStructures */,
+			);
+			name = AiffReader;
+			sourceTree = "<group>";
+		};
+		8A1C21CE1C81F788002DBE53 /* DataStructures */ = {
+			isa = PBXGroup;
+			children = (
 				8A1C21BB1C81F2ED002DBE53 /* IffChunkHeader.cpp */,
 				8A1C21BC1C81F2ED002DBE53 /* IffChunkHeader.hpp */,
 				8A1C21C11C81F542002DBE53 /* CommonChunk.h */,
@@ -156,7 +164,7 @@
 				8A1C21C81C81F698002DBE53 /* SoundDataChunk.cpp */,
 				8A1C21C91C81F698002DBE53 /* SoundDataChunk.hpp */,
 			);
-			name = AiffReader;
+			name = DataStructures;
 			sourceTree = "<group>";
 		};
 		8AC5466F1C5149DA00C33F24 = {
